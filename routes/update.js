@@ -2,9 +2,6 @@ var express = require('express');
 var router = express.Router();
 var parseResponse = require("../func/parseResponse");
 
-var spawn = require("child_process").exec;
-
-
 router.get('/', function(req, res) {
 	if(req.session.user){
 		var project = req.query.project;
@@ -13,13 +10,16 @@ router.get('/', function(req, res) {
 		switch(project){
 			case "lake":
 				//free = spawn('sh', ['./bash/lake.sh']);
+				var exec = require("child_process").exec;
 				exec("sh ./bash/lake.sh", function(error, stdout, stderr) {
 					if (!error) {
 						// things worked!
 						console.log(1);
+						return next(error);
 					} else {
 						// things failed :(
 						console.log(2);
+						return res.status(200).send(stdout);
 					}
 				});
 				
