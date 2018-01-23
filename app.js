@@ -4,6 +4,7 @@ var express = require('express'),
 var bodyParser = require('body-parser');//node.js 中间件，用于处理 JSON, Raw, Text 和 URL 编码的数据。
 app.use(session({
     secret: '2C44-4D44-WppQ38S',
+    cookie: {maxAge: 10 * 1000},
     resave: true,
     saveUninitialized: true
 }));
@@ -15,29 +16,6 @@ app.all('*', function(req, res, next) {
     res.header("X-Powered-By",' 3.2.1')
     if(req.method=="OPTIONS") res.send(200);/*让options请求快速返回*/
     else  next();
-});
-
-app.all('*', function(req, res, next) {
-	console.log(1);
-	var nowTimeStamp = new Date().getTime();
-	console.log(2);
-	var sessionTimeStamp = (req.session && req.session.timeStamp) || 1;
-	console.log(3);
-	if(nowTimeStamp - sessionTimeStamp > 1800000){
-		console.log(4);
-		if(req.session){
-			console.log(5);
-			req.session.destroy();
-		}
-	}else{
-		console.log(6);
-		if(req.session){
-			console.log(7);
-			req.session.timeStamp = new Date().getTime();
-		}
-	}
-	console.log(8);
-	next();
 });
 
 app.use(bodyParser.json());
