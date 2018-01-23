@@ -17,6 +17,7 @@ router.post('/', function(req, res, next) {
 		}else{
 			if(psd === users[userName]) {
 				req.session.user = userName;
+				req.session.timeStamp = new Date().getTime();
 				res.send(parseResponse.success(1, "", "login success!"));
 			}else{
 				parseResponse.error(code, data, msg)

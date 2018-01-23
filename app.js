@@ -25,7 +25,9 @@ app.all('*', function(req, res, next) {
 			req.session.destroy();
 		}
 	}ese{
-		req.session.timeStamp = new Date().getTime();
+		if(req.session){
+			req.session.timeStamp = new Date().getTime();
+		}
 	}
 	next();
 });
