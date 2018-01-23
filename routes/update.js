@@ -5,10 +5,10 @@ var parseResponse = require("../func/parseResponse");
 var spawn = require("child_process").spawn;
 
 
-router.post('/', function(req, res) {
+router.get('/', function(req, res) {
 	if(req.session.user){
 		var project = req.body.project;
-		var free = spawn('sh', ['a.sh']);
+		var free = spawn('sh', ['../bash/lake.sh']);
 		
 		free.stdout.on("data", function(data){
 			console.log("success: \n" + data);
