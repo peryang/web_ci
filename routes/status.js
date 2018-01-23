@@ -4,7 +4,7 @@ var parseResponse = require("../func/parseResponse");
 
 router.get('/', function(req, res) {
 	if(req.session.user){
-		res.send(parseResponse.error(1, "", "login success!"));
+		res.send(parseResponse.success(1, "", "login success!"));
 	}else{
 		res.send(parseResponse.error(-1, "", "Unauthorized!"));
 	}
