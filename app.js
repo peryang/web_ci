@@ -7,15 +7,26 @@ app.use(session({
     saveUninitialized: true
 }));
 
+app.all('*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By",' 3.2.1')
+    if(req.method=="OPTIONS") res.send(200);/*让options请求快速返回*/
+    else  next();
+});
+
 var index = require('./routes/index');
 var content = require('./routes/content'); 
 var list = require('./routes/list');
+var status = require('./routes/status');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
 
 app.use('/', index);
 app.use('/content', content);
 app.use('/list', list);
+app.use('/status', status);
 app.use('/login', login);
 app.use('/logout', logout);
 
