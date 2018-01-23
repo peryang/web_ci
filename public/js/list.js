@@ -20,8 +20,11 @@ $(document).on("click", ".logout", function(ev){
 	$.ajax({
 		url: "http://10.234.137.25:3000/logout",
 		type: "get",
+		dataType: "json",
 		success: function(data){
-			
+			if(data.status == "success"){
+				window.location.href = "/index.html";
+			}
 		},
 		error: function(e){
 			console.error(e);
