@@ -2,9 +2,52 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>demo</title>
+		<title>前端CI系统</title>
 	</head>
 	<body>
 		<h1>这里是xxxxx部前端CI系统</h1>
+		<div>
+			<div style="float: left;">登录名</div>
+			<input class="username" />
+		</div>
+		<div>
+			<div style="float: left;">密码</div>
+			<input class="password" />
+		</div>
+		<div>
+			<div class="login">登录</div>
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+		<script>
+			$(document).on("click", ".login", function(ev){
+				ev.stopPropagation();
+				ev.preventDefault();
+				var username = $(".username").val();
+				var psd = $(".password").val();
+				if(!username || !psd){
+					console.log("输入用户名和密码");
+					alert("输入用户名和密码");
+					return false;
+				}
+				var postData = {
+					username: username,
+					password: psd
+				}
+				$.ajax({
+					url: "http://10.234.137.25:3000/login",
+					type: "post",
+					data: postData,
+					success: function(data){
+						if(data.status == "success"){
+							window.location.href = "/list.html";
+						}
+					},
+					error: function(e){
+						console.error(e);
+					}
+				});
+			});
+			
+		</script>
 	</body>
 </html>

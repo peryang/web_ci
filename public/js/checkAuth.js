@@ -52,7 +52,7 @@ sfAjax({
 	success: function (data) {
 		var result = JSON.parse(data);
 		if(result.status == "error"){
-			window.location.href = "/";
+			window.location.href = "/index.html";
 		}
 	},
 	error: function (e) {

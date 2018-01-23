@@ -1,22 +1,24 @@
 var express = require('express');
 var router = express.Router();
 var users = require("../database/users")["users"];
+var parseResponse = require("../func/parseResponse");
 
-router.get('/', function (req, res) {
+router.post('/', function (req, res) {
 	var userName = req.query.username;
 	var psd = req.query.password;
   if (!userName || !psd) {
-    res.send('login failed');    
+  	res.send(parseResponse.error(-1, "", "login failed"));
   }else{
   	if(!users[userName]){
-  		res.send('user does not exist');
+  		res.send(parseResponse.error("-2", "", "user does not exist"));
   	}else{
   		if(psd === users[userName]) {
 		    req.session.user = userName;
-		    res.send("login success!");
+		    res.send(parseResponse.success(1, "", "login success!"));
 		  }else{
-		  	res.send('password error');
-		  }
+		  	parseResponse.error(code, data, msg)
+		  	res.send(parseResponse.error(-1, "", "password error!"));
+		}
   	}
   }
 });
