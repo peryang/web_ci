@@ -19,7 +19,8 @@ router.get('/', function(req, res) {
 					} else {
 						// things failed :(
 						console.log(2);
-						return res.status(200).send(stdout);
+						res.send(parseResponse.success(1, "", "success!"));
+						return true
 					}
 				});
 				
