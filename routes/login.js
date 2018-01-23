@@ -17,7 +17,6 @@ router.post('/', function(req, res, next) {
 				req.session.user = userName;
 				res.send(parseResponse.success(1, "", "login success!"));
 			}else{
-				parseResponse.error(code, data, msg)
 				res.send(parseResponse.error(-1, "", "password error!"));
 			}
 		}
