@@ -1,3 +1,3 @@
 #! /usr/bin
-cd public/lake/
+cd ./public/lake/
 sh build-publish-front-dev.sh

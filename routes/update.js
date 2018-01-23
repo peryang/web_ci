@@ -2,16 +2,27 @@ var express = require('express');
 var router = express.Router();
 var parseResponse = require("../func/parseResponse");
 
-var spawn = require("child_process").spawn;
+var spawn = require("child_process").exec;
 
 
 router.get('/', function(req, res) {
 	if(req.session.user){
-		var project = req.body.project;
+		var project = req.query.project;
+		//var project = req.body.project; post
 		var free = "";
-		switch(){
+		switch(project){
 			case "lake":
-				free = spawn('sh', ['./bash/lake.sh']);
+				//free = spawn('sh', ['./bash/lake.sh']);
+				exec("sh ./bash/lake.sh", function(error, stdout, stderr) {
+					if (!error) {
+						// things worked!
+						console.log(1);
+					} else {
+						// things failed :(
+						console.log(2);
+					}
+				});
+				
 				break;
 			case "ark":
 				free = spawn('sh', ['./bash/ark.sh']);
