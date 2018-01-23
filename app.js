@@ -18,17 +18,25 @@ app.all('*', function(req, res, next) {
 });
 
 app.all('*', function(req, res, next) {
+	console.log(1);
 	var nowTimeStamp = new Date().getTime();
+	console.log(2);
 	var sessionTimeStamp = (req.session && req.session.timeStamp) || 1;
+	console.log(3);
 	if(nowTimeStamp - sessionTimeStamp > 1800000){
+		console.log(4);
 		if(req.session){
+			console.log(5);
 			req.session.destroy();
 		}
 	}else{
+		console.log(6);
 		if(req.session){
+			console.log(7);
 			req.session.timeStamp = new Date().getTime();
 		}
 	}
+	console.log(8);
 	next();
 });
 
