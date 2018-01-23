@@ -17,6 +17,19 @@ app.all('*', function(req, res, next) {
     else  next();
 });
 
+app.all('*', function(req, res, next) {
+	var nowTimeStamp = new Date().getTime();
+	var sessionTimeStamp = (req.session && req.session.timeStamp) || 1;
+	if(nowTimeStamp - sessionTimeStamp > 1800000){
+		if(req.session){
+			req.session.destroy();
+		}
+	}ese{
+		req.session.timeStamp = new Date().getTime();
+	}
+	next();
+});
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
