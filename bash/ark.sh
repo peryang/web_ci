@@ -1,3 +1,3 @@
 #! /usr/bin
-cd public/lake/
+cd public/ark/
 sh build-publish-front-dev.sh

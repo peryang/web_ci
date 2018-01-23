@@ -8,7 +8,15 @@ var spawn = require("child_process").spawn;
 router.get('/', function(req, res) {
 	if(req.session.user){
 		var project = req.body.project;
-		var free = spawn('sh', ['../bash/lake.sh']);
+		var free = "";
+		switch(){
+			case "lake":
+				free = spawn('sh', ['./bash/lake.sh']);
+				break;
+			case "ark":
+				free = spawn('sh', ['./bash/ark.sh']);
+				break;
+		}
 		
 		free.stdout.on("data", function(data){
 			console.log("success: \n" + data);
