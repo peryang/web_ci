@@ -18,14 +18,12 @@ app.all('*', function(req, res, next) {
     else  next();
 });
 
-var index = require('./routes/index');
 var content = require('./routes/content'); 
 var list = require('./routes/list');
 var status = require('./routes/status');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
 
-app.use('/', index);
 app.use('/content', content);
 app.use('/list', list);
 app.use('/status', status);
