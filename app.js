@@ -1,13 +1,12 @@
 var express = require('express'),
     app = express(),
     session = require('express-session');
+var bodyParser = require('body-parser');//node.js 中间件，用于处理 JSON, Raw, Text 和 URL 编码的数据。
 app.use(session({
     secret: '2C44-4D44-WppQ38S',
     resave: true,
     saveUninitialized: true
 }));
-
-app.use(express.static('public'));
 
 app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -17,6 +16,10 @@ app.all('*', function(req, res, next) {
     if(req.method=="OPTIONS") res.send(200);/*让options请求快速返回*/
     else  next();
 });
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static('public'));
 
 var content = require('./routes/content'); 
 var list = require('./routes/list');
