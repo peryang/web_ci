@@ -4,8 +4,8 @@ var users = require("../database/users")["users"];
 var parseResponse = require("../func/parseResponse");
 
 router.post('/', function(req, res, next) {
-	var userName = req.query.username;
-	var psd = req.query.password;
+	var userName = req.body.username;
+	var psd = req.body.password;
 	console.log(userName, psd);
 	if (!userName || !psd) {
 		res.send(parseResponse.error(-1, "", "login failed"));
