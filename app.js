@@ -7,11 +7,13 @@ app.use(session({
     saveUninitialized: true
 }));
 
+var index = require('./routes/index');
 var content = require('./routes/content'); 
 var list = require('./routes/list');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
 
+app.use('/', index);
 app.use('/content', content);
 app.use('/list', list);
 app.use('/login', login);
