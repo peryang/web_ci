@@ -7,10 +7,26 @@
 	<body>
 		<h1>登录成功</h1>
 		<div>
-			http://10.234.137.25:3000/lake/src/main/webapp/build/index.html?proid=pro16&env=dev&dev&type=list&debug=true&cd=true#/app?formId=b99f800b9f2041ad8dff15d3f0ee33ef&formType=public
+			<a href="/lake/src/main/webapp/build/index.html?proid=pro16&env=dev&dev&type=list&debug=true&cd=true#/app?formId=b99f800b9f2041ad8dff15d3f0ee33ef&formType=public"></a>
 		</div>
 		<div>
 			ark
 		</div>
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+		<script>
+			$.ajax({
+				url: "http://10.234.137.25:3000/status",
+				type: "get",
+				dataType: "json",
+				success: function(data){
+					if(data.status == "error"){
+						window.location.href = "/index.html";
+					}
+				},
+				error: function(e){
+					console.error(e);
+				}
+			});
+		</script>
 	</body>
 </html>
