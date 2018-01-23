@@ -36,6 +36,7 @@
 				$.ajax({
 					url: "http://10.234.137.25:3000/login",
 					type: "post",
+					dataType: "json",
 					data: postData,
 					success: function(data){
 						if(data.status == "success"){
