@@ -8,11 +8,11 @@
 		<h1>这里是xxxxx部前端CI系统</h1>
 		<div>
 			<div style="float: left;">登录名</div>
-			<input class="username" value="bjyxw" />
+			<input class="username" value="" />
 		</div>
 		<div>
 			<div style="float: left;">密码</div>
-			<input class="password" value="bjyxw123654" />
+			<input class="password" value="" />
 		</div>
 		<div>
 			<div class="login">登录</div>
@@ -23,6 +23,8 @@
 		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 		<script>
 			$(document).ready(function(){
+				var username = localStorage.getItem("username") || "";
+				$(".username").val(username);
 				$.ajax({
 					url: "http://10.234.137.25:3000/status",
 					type: "get",
@@ -36,6 +38,7 @@
 						console.error(e);
 					}
 				});
+				
 			});
 			$(document).on("click", ".login", function(ev){
 				ev.stopPropagation();
@@ -58,6 +61,7 @@
 					data: postData,
 					success: function(data){
 						if(data.status == "success"){
+							localStorage.setItem("username", username);
 							window.location.href = "/list.html";
 						}
 					},
