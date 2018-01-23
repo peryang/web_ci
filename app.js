@@ -24,13 +24,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
 var content = require('./routes/content'); 
-var list = require('./routes/list');
+var update = require('./routes/update');
 var status = require('./routes/status');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
 
 app.use('/content', content);
-app.use('/list', list);
+app.use('/update', update);
 app.use('/status', status);
 app.use('/login', login);
 app.use('/logout', logout);
