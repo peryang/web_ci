@@ -1,8 +1,74 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	padding: 50px;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+	color: #00B7FF;
+}
+
+h1{
+	margin: 10% 0;
+}
+.login-info {
+    position: fixed;
+    left: calc(50% - 300px);
+    top: calc(50% - 100px);
+	width: 600px;
+    height: 200px;
+}
+.login-action {
+	position: fixed;
+    left: calc(50% - 300px);
+    top: calc(calc(50% - 100px) + 200px);
+	width: 600px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+.username-info,
+.password-info {
+	margin-left: 150px;
+	
+}
+.username-info{
+	margin-top: 50px;
+}
+.password-info {
+	margin-top: 20px;
+}
+.username-info .label,
+.password-info .label {
+	float: left;
+	width: 100px;
+	font-size: 18px;
+	margin-top: 2px;
+}
+.username-info input,
+.password-info input {
+	width: 200px;
+	height: 28px;
+	border: 1px solid #e4e4e4;
+    border-radius: 5px;
+    text-indent: 17px;
+    cursor: pointer;
+    outline: none;
+    font-size: 14px;
+}
+.username,
+.password {
+	
+}
+.login{
+	margin-left: 100px;
+	width: 400px;
+    background-color: cornflowerblue;
+    font-size: 22px;
+}
+footer{
+	position: fixed;
+	bottom: 0;
+	text-align: center;
+	margin-bottom: 20px;
+	width: 100%;
 }

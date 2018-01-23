@@ -3,89 +3,25 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>前端CI系统</title>
+		<link rel="stylesheet" href="./stylesheets/style.css" />
 	</head>
 	<body>
-		<h1>这里是xxxxx部前端CI系统</h1>
-		<div>
-			<div style="float: left;">登录名</div>
-			<input class="username" value="" />
+		<h1 style="text-align: center;">这里是xxxxx部前端CI系统</h1>
+		<div class="login-info">
+			<div class="username-info">
+				<div class="label">登录名：</div>
+				<input class="username" value="" />
+			</div>
+			<div class="password-info">
+				<div class="label">密&nbsp;&nbsp;&nbsp;码：</div>
+				<input class="password" value="" />
+			</div>
 		</div>
-		<div>
-			<div style="float: left;">密码</div>
-			<input class="password" value="" />
+		<div class="login-action">
+			<div class="login">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</div>
 		</div>
-		<div>
-			<div class="login">登录</div>
-		</div>
-		<div>
-			<div class="logout">退出</div>
-		</div>
+		<footer>© 1997-2018 XX公司版权所有</footer>
 		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-		<script>
-			$(document).ready(function(){
-				var username = localStorage.getItem("username") || "";
-				$(".username").val(username);
-				$.ajax({
-					url: "http://10.234.137.25:3000/status",
-					type: "get",
-					dataType: "json",
-					success: function(data){
-						if(data.status == "success"){
-							window.location.href = "/list.html";
-						}
-					},
-					error: function(e){
-						console.error(e);
-					}
-				});
-				
-			});
-			$(document).on("click", ".login", function(ev){
-				ev.stopPropagation();
-				ev.preventDefault();
-				var username = $(".username").val();
-				var psd = $(".password").val();
-				if(!username || !psd){
-					console.log("输入用户名和密码");
-					alert("输入用户名和密码");
-					return false;
-				}
-				var postData = {
-					username: username,
-					password: psd
-				}
-				$.ajax({
-					url: "http://10.234.137.25:3000/login",
-					type: "post",
-					dataType: "json",
-					data: postData,
-					success: function(data){
-						if(data.status == "success"){
-							localStorage.setItem("username", username);
-							window.location.href = "/list.html";
-						}
-					},
-					error: function(e){
-						console.error(e);
-					}
-				});
-			});
-			
-			$(document).on("click", ".logout", function(ev){
-				ev.stopPropagation();
-				ev.preventDefault();
-				$.ajax({
-					url: "http://10.234.137.25:3000/logout",
-					type: "get",
-					success: function(data){
-						
-					},
-					error: function(e){
-						console.error(e);
-					}
-				});
-			});
-			
-		</script>
+		<script src="./js/index.js"></script>
 	</body>
 </html>

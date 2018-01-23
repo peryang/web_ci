@@ -4,7 +4,7 @@ var express = require('express'),
 var bodyParser = require('body-parser');//node.js 中间件，用于处理 JSON, Raw, Text 和 URL 编码的数据。
 app.use(session({
     secret: '2C44-4D44-WppQ38S',
-    cookie: {maxAge: 10 * 1000},
+    cookie: {maxAge: 30 * 60 * 1000},
     rolling: true,
     resave: true,
     saveUninitialized: true
