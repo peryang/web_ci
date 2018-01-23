@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var URL = require('url');
 var users = require("../database/users")["users"];
 var parseResponse = require("../func/parseResponse");
 
