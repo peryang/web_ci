@@ -16,20 +16,6 @@
 			<a href="">思源</a>
 		</div>
 		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-		<script>
-			$.ajax({
-				url: "http://10.234.137.25:3000/status",
-				type: "get",
-				dataType: "json",
-				success: function(data){
-					if(data.status == "error"){
-						window.location.href = "/index.html";
-					}
-				},
-				error: function(e){
-					console.error(e);
-				}
-			});
-		</script>
+		<script src="./js/list.js"></script>
 	</body>
 </html>

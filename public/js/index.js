@@ -1,5 +1,5 @@
 function loginAction(){
-				var username = $(".username").val();
+	var username = $(".username").val();
 	var psd = $(".password").val();
 	if(!username || !psd){
 		console.log("输入用户名和密码");
@@ -57,19 +57,4 @@ $(document).on("keyup", ".password", function(ev){
 	if(ev.keyCode == 13){
 		loginAction();
 	}
-});
-
-$(document).on("click", ".logout", function(ev){
-	ev.stopPropagation();
-	ev.preventDefault();
-	$.ajax({
-		url: "http://10.234.137.25:3000/logout",
-		type: "get",
-		success: function(data){
-			
-		},
-		error: function(e){
-			console.error(e);
-		}
-	});
 });
