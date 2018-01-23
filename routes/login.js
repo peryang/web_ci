@@ -4,6 +4,7 @@ var users = require("../database/users")["users"];
 var parseResponse = require("../func/parseResponse");
 
 router.post('/', function(req, res, next) {
+	console.log("login");
 	var userName = req.body.username;
 	var psd = req.body.password;
 	console.log(userName, psd);
