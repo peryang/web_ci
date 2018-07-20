@@ -46,7 +46,7 @@ function formatParams(data) {
 }
 
 sfAjax({
-	url: "http://10.234.137.25:3000/status",
+	url: "/status",
 	type: "get",
 	dataType: "json",
 	success: function (data) {

@@ -11,7 +11,7 @@ function loginAction(){
 		password: psd
 	}
 	$.ajax({
-		url: "http://10.234.137.25:3000/login",
+		url: "/login",
 		type: "post",
 		dataType: "json",
 		data: postData,
@@ -31,7 +31,7 @@ $(document).ready(function(){
 	var username = localStorage.getItem("username") || "";
 	$(".username").val(username);
 	$.ajax({
-		url: "http://10.234.137.25:3000/status",
+		url: "/status",
 		type: "get",
 		dataType: "json",
 		success: function(data){
